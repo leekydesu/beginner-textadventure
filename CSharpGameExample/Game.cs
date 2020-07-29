@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CSharpGameExample
 {
@@ -47,79 +48,8 @@ namespace CSharpGameExample
                 Rooms.Add(newRoom);
             }
 
-            Menu();
-            while (Game.activeScene == "Beginning")
-            {
-                Dialog("\nYou are at a fork in the road. There is a sign and a mailbox. Paths lead to the east and west.\n");
-                Dialog("1) Read Sign\n2) Open mailbox\n3) Go east\n4) Go west", ConsoleColor.Green);
-                string selection = Choice();
-                switch (selection)
-                {
-                    case "1":
-                        Dialog("Sign says \"Look out for mailboxes.\"");
-                        break;
-                    case "2":
-                        bool handDamage = Character.DamageBody("Right Hand");
-                        if (handDamage)
-                        {
-                            Dialog("You open the mailbox. The mailbox eats your hand! Oh no!");
-                            Dialog("Your right hand has been eaten by the mailbox.");
-                        }
-                        else
-                        {
-                            Dialog("You prod at the mailbox with your bloody nub. You lament that you'll never open a mailbox again.");
-                        }
-                        break;
-                    case "3":
-                        Dialog("You go east. ... Welp...");
-                        Game.activeScene = "EastOfBeginning";
-                        break;
-                    case "4":
-                        Dialog("You go west. ... at least it isn't east?");
-                        Game.activeScene = "WestOfBeginning";
-                        break;
-                    default:
-                        Dialog("Don't break my game, you cheeky bastard.", ConsoleColor.Red);
-                        break;
-                }
-            }
-            Console.WriteLine($"Scene changed to {Game.activeScene}");
-            while (Game.activeScene == "WestOfBeginning")
-            {
-                Dialog("\nYou arrive at the end of the trail going west. A T-Rex watches you expectingly. There is a taco in the street. Only one path leads to the east.\n");
-                Dialog("1) Talk to T-Rex\n2) Take taco\n3) Aggressive T-pose \n4) Go east", ConsoleColor.Green);
-                string selection = Choice();
-                switch (selection)
-                {
-                    case "1":
-                        bool footDamage = Character.DamageBody("Right Foot");
-                        if (footDamage)
-                        {
-                            Dialog("The T-Rex says \"Finally, Doordash is so slow nowadays.\"");
-                            Dialog("The T-Rex has eaten your right foot. Whoops!");
-                        }
-                        else
-                        {
-                            Dialog("The T-Rex says \"No no, I couldn't possibly eat another bite. Thank you, though.\"");
-                        }
-                        break;
-                    case "2":
-                        Dialog("You swipe that taco. Taco get!");
-
-                        break;
-                    case "3":
-                        Dialog("You go east. ... Welp...");
-                        Game.activeScene = "EastOfBeginning";
-                        break;
-                    case "4":
-                        Dialog("You go west. ... at least it isn't east?");
-                        Game.activeScene = "WestOfBeginning";
-                        break;
-                    default:
-                        Dialog("Don't break my game, you cheeky bastard.", ConsoleColor.Red);
-                        break;
-                }
-            }
+            Console.Clear();
+            Menu(Rooms.Find(room => room.Label == activeScene));
         }
 
         public static void NameCharacter()
@@ -158,13 +88,14 @@ namespace CSharpGameExample
         static bool Goal
         { get; set; } = false;
 
-        public static void Menu()
+        public static void Menu(Room currentRoom)
         {
-            Console.Clear();
+            Dialog(currentRoom.Description);
 
             string userInput = Choice();
             string[] getVerbs = { "get", "take", "possess", "steal", "pickup" };
             string[] readVerbs = { "read", "look", "check" };
+            
             if (userInput.Contains(" "))
             {
                 string actionVerb = userInput.Split(" ")[0];
@@ -225,6 +156,16 @@ namespace CSharpGameExample
                 {
                     case "n":
                         {
+                            if (currentRoom.Exits.Contains("north"))
+                            {
+                                Console.Clear();
+                                string nextRoom = Array.Find(currentRoom.Exits, room => room.StartsWith("north"));
+                                activeScene = "Room" + nextRoom.Split("_")[1];
+                            }
+                            else
+                            {
+                                Dialog("No way to travel that direction.");
+                            }
                             break;
                         }
                     case "s":
@@ -287,7 +228,7 @@ namespace CSharpGameExample
             StartGame();
             while (Run == true)
             {
-                Menu();
+                Menu(Rooms.Find(room => room.Label == activeScene));
             }
             EndGame();
         }
