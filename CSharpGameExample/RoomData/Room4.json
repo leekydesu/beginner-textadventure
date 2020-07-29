@@ -1,10 +1,11 @@
 ﻿{
-    "Label":"Room2",
-    "Description":"\nYou're in a dank room with a big door to the north. There is a massive lock on it. In the corner there is a small stream and a frog sitting there.\n",
-    "Items": [],
+    "Label":"Room4",
+    "Description":"\nSmaller chamber with only exit to the south. There is a skelly man on the ground holding a big key.\n",
+    "Items": [
+        { "Name":"Key", "Description":"It probably unlocks something! That's generally how keys work!" }
+    ],
     "Exits": [
-        "north_5",
-        "west_1"
+        "south_3"
     ],
     "UniqueActions": [
         { "Action":"read stream", "Flag":"none", "Text":"The stream is definitely made of water. Nice detective work!", "Consequence":"none" },

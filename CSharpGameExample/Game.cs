@@ -13,7 +13,6 @@ namespace CSharpGameExample
     {
         static string activeScene = "Room1";
         const ConsoleColor defaultColor = ConsoleColor.White;
-        Item itemTaco = new Item("Taco", "Hard shelled taco with seasoned ground beef, shredded cheese, and cool iceberg lettuce.");
         static List<Room> Rooms = new List<Room>();
 
         public static void StartGame()

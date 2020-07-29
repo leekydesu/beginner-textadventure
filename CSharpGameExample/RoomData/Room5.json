@@ -1,10 +1,11 @@
 ﻿{
-    "Label":"Room2",
+    "Label":"Room5",
     "Description":"\nYou're in a dank room with a big door to the north. There is a massive lock on it. In the corner there is a small stream and a frog sitting there.\n",
-    "Items": [],
+    "Items": [
+        { "Name":"Treasure", "Description":"With this in hand, you can win the game. Wonder what it is! Probably a fancy hat." }
+    ],
     "Exits": [
-        "north_5",
-        "west_1"
+        "south_2"
     ],
     "UniqueActions": [
         { "Action":"read stream", "Flag":"none", "Text":"The stream is definitely made of water. Nice detective work!", "Consequence":"none" },
