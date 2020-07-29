@@ -1,0 +1,14 @@
+﻿{
+    "Label":"Room2",
+    "Description":"\nYou are at a fork in the road. There is a sign and a mailbox. Paths lead to the east and west.\n",
+    "Items": [],
+    "Exits": [
+        "east_2",
+        "west_3"
+    ],
+    "UniqueActions": [
+        { "Action":"open mailbox", "Flag":"RightHandGone", "Text":"You prod at the mailbox with your bloody nub. You lament that you'll never open a mailbox again.", "Consequence":"none" },
+        { "Action":"open mailbox", "Flag":"none", "Text":"You open the mailbox. The mailbox eats your hand! Oh no!¬Your right hand has been eaten by the mailbox.", "Consequence":"BodyDamage" },
+        { "Action":"read sign", "Flag":"none", "Text":"The sign in front of you says 'Look out for mailboxes. They are dangerous.'", "Consequence":"none" }
+    ]
+}
