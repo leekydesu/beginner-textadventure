@@ -156,28 +156,22 @@ namespace CSharpGameExample
                 {
                     case "n":
                         {
-                            if (currentRoom.Exits.Contains("north"))
-                            {
-                                Console.Clear();
-                                string nextRoom = Array.Find(currentRoom.Exits, room => room.StartsWith("north"));
-                                activeScene = "Room" + nextRoom.Split("_")[1];
-                            }
-                            else
-                            {
-                                Dialog("No way to travel that direction.");
-                            }
+                            Move(currentRoom.Exits, "north");
                             break;
                         }
                     case "s":
                         {
+                            Move(currentRoom.Exits, "south");
                             break;
                         }
                     case "e":
                         {
+                            Move(currentRoom.Exits, "east");
                             break;
                         }
                     case "w":
                         {
+                            Move(currentRoom.Exits, "west");
                             break;
                         }
                     case "i":
@@ -231,6 +225,20 @@ namespace CSharpGameExample
                 Menu(Rooms.Find(room => room.Label == activeScene));
             }
             EndGame();
+        }
+
+        public static void Move(string[] exits, string direction)
+        {
+            if (exits.Contains("north"))
+            {
+                Console.Clear();
+                string nextRoom = Array.Find(exits, room => room.StartsWith(direction));
+                activeScene = "Room" + nextRoom.Split("_")[1];
+            }
+            else
+            {
+                Dialog("No way to travel that direction.");
+            }
         }
 
     }
