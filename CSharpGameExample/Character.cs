@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CSharpGameExample
@@ -9,8 +10,7 @@ namespace CSharpGameExample
         public static string playerName = "Default Dan";
         public static int luck = 5;
         public static int experience = 0;
-        private static List<string> bodyParts = new List<string> { "Right Hand", "Left Hand", "Right Foot", "Left Foot" };
-        public static List<string> inventory = new List<string>();
+        public static List<string> bodyParts = new List<string> { "Right Hand", "Left Hand", "Right Foot", "Left Foot" };
 
         public static bool DamageBody(string bodyPart)
         {
@@ -21,6 +21,28 @@ namespace CSharpGameExample
                 damageResult = true;
             }
             return damageResult;
+        }
+
+        public static List<Item> Inventory
+        {
+            get; set;
+        } = new List<Item>();
+
+        public static string Flags
+        {
+            get; set;
+        } = "";
+
+        public static void SetFlags(string[] newFlags)
+        {
+            foreach (string newFlag in newFlags)
+            {
+                Flags = $"{newFlag};{Flags}";
+            }
+        }
+        public static void SetFlags(string newFlag)
+        {
+            Flags = $"{newFlag};{Flags}";
         }
     }
 }

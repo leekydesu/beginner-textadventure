@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharpGameExample
 {
-    class Item
+    public class Item
     {
         public string Name
         {

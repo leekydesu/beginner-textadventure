@@ -1,19 +1,48 @@
 ﻿{
-    "Label":"Room3",
-    "Description":"\nkYou're in a cavernous room. There is an open archway leading north and the path leading back east. A giant dinosaur stands near the archway. There is a taco on the ground on the opposite side of the room.\n",
-    "Items": [
-        { "Name":"Taco","Description":"Hard shelled taco with seasoned ground beef, shredded cheese, and cool iceberg lettuce." }
-    ],
-    "Exits": [
-        "north_4",
-        "east_1"
-    ],
-    "UniqueActions": [
-        { "Action":"read dinosaur", "Flag":"none", "Text":"The dinosaur seems amicable enough, but it does seem as though he's guarding that archway.", "Consequence":"none" },
-        { "Action":"use taco", "Flag":"none", "Text":"The dinosaur says 'Oh good, a taco! I was feeling a bit peckish.'\nThe dinosaur consumes your taco.\nYou now have no taco.", "Consequence":"TacoGone" },
-        { "Action":"get dinosaur", "Flag":"none", "Text":"You tackle the dinosaur. In hindsight, this was probably a bad idea.¬The dinosaur devours one of your appendages and tosses you back. 'Sorry, chum! Just doing my job!' he says with a smile.", "Consequence":"BodyDamage" },
-        { "Action":"read archway", "Flag":"none", "Text":"The sign in front of you says 'Look out for mailboxes. They are dangerous.'", "Consequence":"none" }
-        { "Action":"talk dinosaur", "Flag":"DinoTalk", "Text":"The dinosaur winks at you and says 'I love having a wife and kids back home. I'm one day from retirement!'", "Consequence":"FrogTalk" }
-        { "Action":"talk dinosaur", "Flag":"none", "Text":"The dinosaur says 'Hey there little friend! Nice of you to visit. If you want to go north, I'm afraid I can't let that happen, but if you want to just hang out, that's okie dokie, artichokey!'", "Consequence":"DinoTalk" }
-    ]
+	"Label": "Room3",
+	"Description": "\nkYou're in a cavernous room. There is an open archway leading north and the path leading back east. A giant dinosaur stands near the archway. There is a taco on the ground on the opposite side of the room.\n",
+	"Items": [{
+		"Name": "Taco",
+		"Description": "Hard shelled taco with seasoned ground beef, shredded cheese, and cool iceberg lettuce."
+	}],
+	"Exits": [
+		"north_4",
+		"east_1"
+	],
+	"UniqueActions": [{
+			"Action": "read dinosaur",
+			"Flag": "none",
+			"Text": "The dinosaur seems amicable enough, but it does seem as though he's guarding that archway.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "use taco",
+			"Flag": "none",
+			"Text": "The dinosaur says 'Oh good, a taco! I was feeling a bit peckish.'\nThe dinosaur consumes your taco.\nYou now have no taco.",
+			"Consequence": "TacoGone"
+		},
+		{
+			"Action": "get dinosaur",
+			"Flag": "none",
+			"Text": "You tackle the dinosaur. In hindsight, this was probably a bad idea.¬The dinosaur devours one of your appendages and tosses you back. 'Sorry, chum! Just doing my job!' he says with a smile.",
+			"Consequence": "BodyDamage"
+		},
+		{
+			"Action": "read archway",
+			"Flag": "none",
+			"Text": "The sign in front of you says 'Look out for mailboxes. They are dangerous.'",
+			"Consequence": "none"
+		},
+		{
+			"Action": "talk dinosaur",
+			"Flag": "DinoTalk",
+			"Text": "The dinosaur winks at you and says 'I love having a wife and kids back home. I'm one day from retirement!'",
+			"Consequence": "FrogTalk"
+		}, {
+			"Action": "talk dinosaur",
+			"Flag": "none",
+			"Text": "The dinosaur says 'Hey there little friend! Nice of you to visit. If you want to go north, I'm afraid I can't let that happen, but if you want to just hang out, that's okie dokie, artichokey!'",
+			"Consequence": "DinoTalk"
+		}
+	]
 }

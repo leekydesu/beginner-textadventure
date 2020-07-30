@@ -16,7 +16,7 @@ namespace CSharpGameExample
             get; set;
         }
 
-        public List<string> Items
+        public List<Item> Items
         {
             get; set;
         }

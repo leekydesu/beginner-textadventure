@@ -38,6 +38,8 @@ namespace CSharpGameExample
             Console.WriteLine("Adventure Game!");
             Console.WriteLine("Time to explore some shit~!");
             NameCharacter();
+            Item wallet = new Item("Wallet", "It's your lucky wallet! Has a bear on it.");
+            Character.Inventory.Add(wallet);
 
             string[] roomFiles = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "RoomData"));
             foreach (string roomFile in roomFiles)
@@ -94,16 +96,18 @@ namespace CSharpGameExample
             string userInput = Choice();
             string[] getVerbs = { "get", "take", "possess", "steal", "pickup" };
             string[] readVerbs = { "read", "look", "check" };
-            
-            if (userInput.Contains(" "))
+            string[] talkVerbs = { "talk", "speak", "chat" };
+
+            if (userInput.Contains(" ") && userInput.Split().Length <= 2)
             {
                 string actionVerb = userInput.Split(" ")[0];
                 string actionItem = userInput.Split(" ")[1];
                 if (actionVerb == "use")
                 {
-                    if (Character.inventory.Contains(actionItem))
+                    if (Character.Inventory.Exists(inventoryItem => inventoryItem.Name == actionItem))
                     {
-
+                        string uaPhrase = $"use {actionItem}";
+                        EvalUniqueActions(currentRoom.UniqueActions, uaPhrase, actionItem, actionVerb);
                     }
                     else
                     {
@@ -112,36 +116,23 @@ namespace CSharpGameExample
                 }
                 else if (getVerbs.Contains(actionVerb))
                 {
-                    if (Character.inventory.Contains(actionItem))
-                    {
-
-                    }
-                    else
-                    {
-                        Dialog($"There is no {actionItem} to {actionVerb}.");
-                    }
+                    string uaPhrase = $"get {actionItem}";
+                    EvalUniqueActions(currentRoom.UniqueActions, uaPhrase, actionItem, actionVerb);
                 }
                 else if (actionVerb == "open")
                 {
-                    if (Character.inventory.Contains(actionItem))
-                    {
-
-                    }
-                    else
-                    {
-                        Dialog($"There is no {actionItem} to open.");
-                    }
+                    string uaPhrase = $"open {actionItem}";
+                    EvalUniqueActions(currentRoom.UniqueActions, uaPhrase, actionItem, actionVerb);
                 }
                 else if (readVerbs.Contains(actionVerb))
                 {
-                    if (Character.inventory.Contains(actionItem))
-                    {
-
-                    }
-                    else
-                    {
-                        Dialog($"There is no {actionItem} read or check.");
-                    }
+                    string uaPhrase = $"read {actionItem}";
+                    EvalUniqueActions(currentRoom.UniqueActions, uaPhrase, actionItem, actionVerb);
+                }
+                else if (talkVerbs.Contains(actionVerb))
+                {
+                    string uaPhrase = $"talk {actionItem}";
+                    EvalUniqueActions(currentRoom.UniqueActions, uaPhrase, actionItem, actionVerb);
                 }
                 else
                 {
@@ -176,9 +167,14 @@ namespace CSharpGameExample
                     case "i":
                         {
                             Dialog("You rummage through your backpack and find the following:\n");
-                            foreach (string possessedItem in Character.inventory)
+                            foreach (Item possessedItem in Character.Inventory)
                             {
-                                Dialog($"- {possessedItem}", ConsoleColor.Cyan);
+                                Dialog($"- {possessedItem.Name}", ConsoleColor.Cyan);
+                            }
+                            Dialog("Also, here are all your appendages you still have!\n");
+                            foreach (string bodyPart in Character.bodyParts)
+                            {
+                                Dialog($"- {bodyPart}", ConsoleColor.Cyan);
                             }
                             break;
                         }
@@ -228,7 +224,7 @@ namespace CSharpGameExample
 
         public static void Move(string[] exits, string direction)
         {
-            if (exits.Contains("north"))
+            if (exits.Any(exit => exit.StartsWith(direction)))
             {
                 Console.Clear();
                 string nextRoom = Array.Find(exits, room => room.StartsWith(direction));
@@ -237,6 +233,40 @@ namespace CSharpGameExample
             else
             {
                 Dialog("No way to travel that direction.");
+            }
+        }
+
+        public static void RunUniqueAction(string roomText, string roomConsequence)
+        {
+            Dialog(roomText);
+            if (roomConsequence != "none")
+            {
+                Character.SetFlags(roomConsequence);
+            }
+        }
+
+        public static void EvalUniqueActions(List<UniqueAction> roomUniqueActions, string uaMatchPhrase, string uaActionItem, string uaActionVerb)
+        {
+            if (roomUniqueActions.Exists(ua => ua.Action == uaMatchPhrase))
+            {
+                List<UniqueAction> roomUAs = roomUniqueActions.FindAll(ua => ua.Action == uaMatchPhrase);
+                foreach (UniqueAction roomUA in roomUAs)
+                {
+                    if (roomUA.Flag != "none" && Character.Flags.Contains(roomUA.Flag))
+                    {
+                        RunUniqueAction(roomUA.Text, roomUA.Consequence);
+                        break;
+                    }
+                    else if (roomUA.Flag == "none")
+                    {
+                        RunUniqueAction(roomUA.Text, roomUA.Consequence);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Dialog($"There is no {uaActionItem} to {uaActionVerb}.");
             }
         }
 

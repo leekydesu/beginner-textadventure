@@ -1,17 +1,46 @@
 ﻿{
-    "Label":"Room2",
-    "Description":"\nYou're in a dank room with a big door to the north. There is a massive lock on it. In the corner there is a small stream and a frog sitting there.\n",
-    "Items": [],
-    "Exits": [
-        "north_5",
-        "west_1"
-    ],
-    "UniqueActions": [
-        { "Action":"read stream", "Flag":"none", "Text":"The stream is definitely made of water. Nice detective work!", "Consequence":"none" },
-        { "Action":"get stream", "Flag":"NoFeet", "Text":"You've already lost both feet. You think it might be better to not tempt fate.", "Consequence":"none" },
-        { "Action":"get stream", "Flag":"none", "Text":"You try to get the stream, but the stream gets you instead!¬Something in the stream has eaten one of your feet.", "Consequence":"BodyDamage" },
-        { "Action":"read sign", "Flag":"none", "Text":"The sign in front of you says 'Look out for mailboxes. They are dangerous.'", "Consequence":"none" }
-        { "Action":"talk frog", "Flag":"FrogTalk", "Text":"The frog says 'Got that taco yet? Sure could USE me a TACO, chum!'", "Consequence":"FrogTalk" }
-        { "Action":"talk frog", "Flag":"none", "Text":"The frog says 'Man, I could really go for a taco. If you bring me a taco, I will grant you unlimited power.'", "Consequence":"FrogTalk" }
-    ]
+	"Label": "Room2",
+	"Description": "\nYou're in a dank room with a big door to the north. There is a massive lock on it. In the corner there is a small stream and a frog sitting there.\n",
+	"Items": [],
+	"Exits": [
+		"north_5",
+		"west_1"
+	],
+	"UniqueActions": [{
+			"Action": "read stream",
+			"Flag": "none",
+			"Text": "The stream is definitely made of water. Nice detective work!",
+			"Consequence": "none"
+		},
+		{
+			"Action": "get stream",
+			"Flag": "NoFeet",
+			"Text": "You've already lost both feet. You think it might be better to not tempt fate.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "get stream",
+			"Flag": "none",
+			"Text": "You try to get the stream, but the stream gets you instead!¬Something in the stream has eaten one of your feet.",
+			"Consequence": "BodyDamage"
+		},
+		{
+			"Action": "read sign",
+			"Flag": "none",
+			"Text": "The sign in front of you says 'Look out for mailboxes. They are dangerous.'",
+			"Consequence": "none"
+		},
+		{
+			"Action": "talk frog",
+			"Flag": "FrogTalk",
+			"Text": "The frog says 'Got that taco yet? Sure could USE me a TACO, chum!'",
+			"Consequence": "FrogTalk"
+		},
+		{
+			"Action": "talk frog",
+			"Flag": "none",
+			"Text": "The frog says 'Man, I could really go for a taco. If you bring me a taco, I will grant you unlimited power.'",
+			"Consequence": "FrogTalk"
+		}
+	]
 }
