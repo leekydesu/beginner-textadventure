@@ -7,6 +7,7 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Runtime.InteropServices.ComTypes;
+using System.Text.RegularExpressions;
 
 namespace CSharpGameExample
 {
@@ -18,6 +19,11 @@ namespace CSharpGameExample
         static List<Room> Rooms = new List<Room>();
         static List<Item> Items = new List<Item>();
         static Room AllRoom = new Room();
+        static string[] getVerbs = { "get", "take", "possess", "steal", "pickup" };
+        static string[] readVerbs = { "read", "look", "check" };
+        static string[] talkVerbs = { "talk", "speak", "chat" };
+        static List<string> AllRegularVerbs = new List<string>();
+        
 
         public static void StartGame()
         {
@@ -61,6 +67,11 @@ namespace CSharpGameExample
 
             Item wallet = Items.Find(item => item.Name == "Wallet");
             Character.Inventory.Add(wallet);
+
+            AllRegularVerbs.AddRange(getVerbs);
+            AllRegularVerbs.AddRange(readVerbs);
+            AllRegularVerbs.AddRange(talkVerbs);
+            AllRegularVerbs.Add("use");
 
             Console.Clear();
             Game.AllRoom = Rooms.Find(room => room.Label == "RoomAll");
@@ -119,14 +130,11 @@ namespace CSharpGameExample
             }
 
             string userInput = Choice();
-            string[] getVerbs = { "get", "take", "possess", "steal", "pickup" };
-            string[] readVerbs = { "read", "look", "check" };
-            string[] talkVerbs = { "talk", "speak", "chat" };
 
             List<UniqueAction> roomUAs = currentRoom.UniqueActions;
             AllRoom.UniqueActions.ForEach(ua => roomUAs.Add(ua));
 
-            if (userInput.Contains(" ") && userInput.Split().Length <= 2)
+            if (userInput.Contains(" ") && userInput.Split(" ").Length <= 2)
             {
                 string actionVerb = userInput.Split(" ")[0].ToLower();
                 string actionItem = userInput.Split(" ")[1].ToLower();
@@ -179,9 +187,14 @@ namespace CSharpGameExample
                     string uaPhrase = $"talk {actionItem}";
                     EvalUniqueActions(roomUAs, uaPhrase, actionItem, actionVerb);
                 }
+                else if (!AllRegularVerbs.Contains(actionVerb))
+                {
+                    string uaPhrase = $"{actionVerb} {actionItem}";
+                    EvalUniqueActions(roomUAs, uaPhrase, actionItem, actionVerb);
+                }
                 else
                 {
-                    Dialog("I don't know what that's supposed to mean. Try a simpler 1-2 word command?");
+                    Dialog("I don't know what you typed to get here, but I don't know what that's supposed to mean. Try a simpler 1-2 word command?");
                 }
             }
 
@@ -257,6 +270,7 @@ namespace CSharpGameExample
             currentRoomLabel = currentRoom.Label;
             if (Character.Flags.Contains("PlayerDead"))
             {
+                Console.ReadKey();
                 Run = false;
             }
         }
@@ -423,7 +437,13 @@ namespace CSharpGameExample
                 }
                 else
                 {
-                    Dialog($"There is no {uaActionItem} to {uaActionVerb}.");
+                    Regex reg = new Regex("^(a|e|i|o|u)");
+                    string dialogArticle = "a";
+                    if (reg.IsMatch(uaActionItem))
+                    {
+                        dialogArticle = "an";
+                    }
+                    Dialog($"You cannot {uaActionVerb} {dialogArticle} {uaActionItem}.");
                 }
             }
         }

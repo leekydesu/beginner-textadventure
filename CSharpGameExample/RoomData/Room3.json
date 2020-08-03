@@ -43,7 +43,7 @@
 			"Action": "use taco",
 			"Flag": "none",
 			"Text": "The dinosaur says 'Oh good, a taco! I was feeling a bit peckish.'\nThe dinosaur consumes your taco.\nYou now have no taco.",
-			"Consequence": "TacoGone,Lose_Taco"
+			"Consequence": "TacoGone;Lose_Taco"
 		},
 		{
 			"Action": "get dinosaur",

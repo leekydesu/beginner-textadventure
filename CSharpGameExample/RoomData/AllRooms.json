@@ -19,6 +19,12 @@
 			"Consequence": "PlayerDead"
 		},
 		{
+			"Action": "help me",
+			"Flag": "none",
+			"Text": "I help those who help themselves! Also, try typing ? instead.",
+			"Consequence": "none"
+		},
+		{
 			"Action": "talk self",
 			"Flag": "none",
 			"Text": "You say hello to yourself. Off in the distance, you hear yourself say hello back. Spooky!",

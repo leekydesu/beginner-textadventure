@@ -1,14 +1,23 @@
 ﻿{
 	"Label": "Room4",
 	"Description": "\nSmaller chamber with only exit to the south. Very dank and mossy, probably used to be a jail cell or something like that. There is a skellyman on the ground holding a big key.\n",
-	"Items": [{
-		"Name": "Key",
-		"Description": "It probably unlocks something! That's generally how keys work!"
-	}],
+	"Items": [],
 	"Exits": [
 		"south_3"
 	],
 	"UniqueActions": [{
+			"Action": "get popcorn",
+			"Flag": "PopcornGet",
+			"Text": "Skellyman's remains are already devoid of delicious caramel popcorn. Well done.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "get popcorn",
+			"Flag": "SkellyDead",
+			"Text": "You pick up the caramel popcorn. It is glistening and delicious looking!",
+			"Consequence": "Gain_Popcorn;PopcornGet"
+		},
+		{
 			"Action": "get key",
 			"Flag": "none",
 			"Text": "You pry the key out of the skellyman's hands. 'Oh no... Mr. Key... my only friend...' the skellyman softly sobs.",
@@ -18,18 +27,24 @@
 			"Action": "eat popcorn",
 			"Flag": "SkellyDead",
 			"Text": "You eat the caramel popcorn. It tastes alright at first, but then your throat starts to itch. The itching changes to a burning sensation. You look down and see your skin beginning to melt away, leaving nothing but bones behind! UH OH!",
-			"Consequence": "PlayerDeadCaramel"
+			"Consequence": "PlayerDead"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "SkellyDead",
+			"Text": "You shoot the skellyman again and a random bone quietly breaks. It's no longer satisfying. The thrill is gone.",
+			"Consequence": "none"
 		},
 		{
 			"Action": "use gun",
 			"Flag": "ShotSkelly2",
 			"Text": "You shoot the skellyman again, this time in the skull. His head disintegrates, but a pile of caramel popcorn is revealed inside!",
-			"Consequence": "SkellyDead;Add_Popcorn"
+			"Consequence": "SkellyDead"
 		},
 		{
 			"Action": "use gun",
 			"Flag": "ShotSkellyman",
-			"Text": "You shoot the skellyman again. 'Now you're just being rude.'",
+			"Text": "You shoot the skellyman again. His arm bones fly off. 'Now you're just being rude,' he says dejectedly.",
 			"Consequence": "ShotSkelly2"
 		},
 		{
@@ -40,8 +55,26 @@
 		},
 		{
 			"Action": "read skellyman",
+			"Flag": "SkellyDead",
+			"Text": "No bones about it, that is now an ex-skellyman.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "read skellyman",
 			"Flag": "none",
 			"Text": "You get a good look at the skellyman. He is a puzzle wrapped inside of an enigma. You're not figuring him out anytime soon!",
+			"Consequence": "none"
+		},
+		{
+			"Action": "talk skellyman",
+			"Flag": "SkellyDead",
+			"Text": "You try to talk to the skellyman, but he's lost his mind... plus the rest of the head that goes with it.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "talk skellyman",
+			"Flag": "ShotSkellyman",
+			"Text": "The skellyman looks at you sternly and says 'I don't like you anymore. Who shoots a perfectly benign skellyman?! Get out of my sight that I would have if I still had eyes!'",
 			"Consequence": "none"
 		},
 		{
@@ -53,7 +86,7 @@
 		{
 			"Action": "talk skellyman",
 			"Flag": "SkellyTalk",
-			"Text": "The skellyman says 'Don't mind me. I'll just be here forever. See ya!'",
+			"Text": "The skellyman says 'Don't mind me. I'll just be here forever. Also, if you ever find caramel corn in a dungeon, highly recommend against eating it. That stuff is bad for your health!'",
 			"Consequence": "none"
 		},
 		{

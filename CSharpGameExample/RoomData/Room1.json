@@ -19,6 +19,24 @@
 			"Consequence": "BodyDamageRH;RightHandGone"
 		},
 		{
+			"Action": "use treasure",
+			"Flag": "TreasureGet",
+			"Text": "You put the treasure into the mailbox. A postal worker immediately strides up and takes the freshly deposited package. He then shoots you and stuffs your remains into the mailbox. Turns out it was actually Satan in disguise, trying to prevent mankind from getting the treasure. UH-OH!",
+			"Consequence": "PlayerDead"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "GunGet",
+			"Text": "You shoot the mailbox. The mailbox now has a hole in it and looks kinda grumpy. Not sure what this achieved, but at least you feel accomplished!",
+			"Consequence": "none"
+		},
+		{
+			"Action": "talk mailbox",
+			"Flag": "none",
+			"Text": "You say hello to the mailbox. The mailbox does not say hello back. This probably won't go anywhere.",
+			"Consequence": "none"
+		},
+		{
 			"Action": "read sign",
 			"Flag": "none",
 			"Text": "The sign in front of you says 'Look out for mailboxes. They are dangerous.'",

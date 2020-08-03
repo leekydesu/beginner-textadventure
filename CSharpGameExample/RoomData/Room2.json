@@ -20,7 +20,7 @@
 		},
 		{
 			"Action": "get stream",
-			"Flag": "",
+			"Flag": "none",
 			"Text": "You try to get the stream, but the stream gets you instead!\nSomething in the stream has eaten one of your limbs.",
 			"Consequence": "BodyDamage;StreamPain"
 		},
@@ -94,6 +94,12 @@
 			"Action": "talk frog",
 			"Flag": "GunGet",
 			"Text": "The frog says 'Nothing more powerful than a gun! Pew pew!'",
+			"Consequence": "none"
+		},
+		{
+			"Action": "talk frog",
+			"Flag": "TacoGone",
+			"Text": "The frog says 'You seriously gave a taco to the dinosaur and not me? You're screwed now, buddy.'",
 			"Consequence": "none"
 		},
 		{
