@@ -14,16 +14,21 @@ namespace CSharpGameExample
         {
             get; private set;
         }
+        public string NewRoomDescription
+        {
+            get; private set;
+        }
 
         public void UpdateDescription(string newDescription)
         {
             Description = newDescription;
         }
 
-        public Item(string name, string description)
+        public Item(string name, string description, string newRoomDescription)
         {
             Name = name;
             Description = description;
+            NewRoomDescription = newRoomDescription;
         }
 
     }

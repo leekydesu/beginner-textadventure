@@ -31,9 +31,9 @@ namespace CSharpGameExample
             get; set;
         }
 
-        public void UpdateDescription()
+        public void UpdateDescription(string newDescription)
         {
-            Description = "something new";
+            Description = newDescription;
         }
 
         public void AddItem()

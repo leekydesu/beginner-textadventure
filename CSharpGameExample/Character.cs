@@ -10,14 +10,17 @@ namespace CSharpGameExample
         public static string playerName = "Default Dan";
         public static int luck = 5;
         public static int experience = 0;
-        public static List<string> bodyParts = new List<string> { "Right Hand", "Left Hand", "Right Foot", "Left Foot" };
+        public static List<string> BodyParts
+        {
+            get; set;
+        } = new List<string> { "Right Hand", "Left Hand", "Right Foot", "Left Foot" };
 
         public static bool DamageBody(string bodyPart)
         {
             bool damageResult = false;
-            if (bodyParts.Contains(bodyPart))
+            if (BodyParts.Contains(bodyPart))
             {
-                bodyParts.Remove(bodyPart);
+                BodyParts.Remove(bodyPart);
                 damageResult = true;
             }
             return damageResult;

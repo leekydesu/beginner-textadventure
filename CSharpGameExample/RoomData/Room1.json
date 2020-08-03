@@ -15,8 +15,8 @@
 		{
 			"Action": "open mailbox",
 			"Flag": "none",
-			"Text": "You open the mailbox. The mailbox eats your hand! Oh no!¬Your right hand has been eaten by the mailbox.",
-			"Consequence": "RightHandGone"
+			"Text": "You open the mailbox. The mailbox eats your hand! Oh no!\nYour right hand has been eaten by the mailbox.",
+			"Consequence": "BodyDamageRH;RightHandGone"
 		},
 		{
 			"Action": "read sign",

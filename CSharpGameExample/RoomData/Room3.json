@@ -1,43 +1,79 @@
 ﻿{
 	"Label": "Room3",
-	"Description": "\nkYou're in a cavernous room. There is an open archway leading north and the path leading back east. A giant dinosaur stands near the archway. There is a taco on the ground on the opposite side of the room.\n",
+	"Description": "\nYou're in a cavernous room. There is an open archway leading north and the path leading back east. A giant dinosaur stands near the archway. There is a taco on the ground on the opposite side of the room.\n",
 	"Items": [{
 		"Name": "Taco",
 		"Description": "Hard shelled taco with seasoned ground beef, shredded cheese, and cool iceberg lettuce."
 	}],
 	"Exits": [
-		"north_4",
+		"north_4_DinoDead",
 		"east_1"
 	],
 	"UniqueActions": [{
 			"Action": "read dinosaur",
-			"Flag": "none",
-			"Text": "The dinosaur seems amicable enough, but it does seem as though he's guarding that archway.",
+			"Flag": "DinoDead",
+			"Text": "You spared no expense... in murdering the last dinosaur.",
 			"Consequence": "none"
+		},
+		{
+			"Action": "read dinosaur",
+			"Flag": "none",
+			"Text": "The dinosaur seems amicable enough, but it does seem as though he's guarding that archway intently.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "north",
+			"Flag": "none",
+			"Text": "You try to go north through the archway, but the dinosaur stops you.\n'Sorry chum! Going to have to take a bite of you for trespassing. Just part of my job. No hard feelings?'\nThe dinosaur bites at one of your appendages.",
+			"Consequence": "BodyDamage"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "DinoDead",
+			"Text": "You shoot the dinosaur again. Somewhere far away, his wife and kids start crying. Great job!",
+			"Consequence": "none"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "none",
+			"Text": "You shoot the dinosaur. The dinosaur says 'Bullets... my only weakness... how did you know?'\nThe dinosaur falls over.\nYou have slayed the last dinosaur.",
+			"Consequence": "DinoDead"
 		},
 		{
 			"Action": "use taco",
 			"Flag": "none",
 			"Text": "The dinosaur says 'Oh good, a taco! I was feeling a bit peckish.'\nThe dinosaur consumes your taco.\nYou now have no taco.",
-			"Consequence": "TacoGone"
+			"Consequence": "TacoGone,Lose_Taco"
+		},
+		{
+			"Action": "get dinosaur",
+			"Flag": "DinoDead",
+			"Text": "Well now that he's dead, is there really a point in capturing him?",
+			"Consequence": "none"
 		},
 		{
 			"Action": "get dinosaur",
 			"Flag": "none",
-			"Text": "You tackle the dinosaur. In hindsight, this was probably a bad idea.¬The dinosaur devours one of your appendages and tosses you back. 'Sorry, chum! Just doing my job!' he says with a smile.",
+			"Text": "You tackle the dinosaur. In hindsight, this was probably a bad idea.\nThe dinosaur devours one of your appendages and tosses you back. 'Sorry, chum! Just doing my job!' he says with a smile.",
 			"Consequence": "BodyDamage"
 		},
 		{
 			"Action": "read archway",
 			"Flag": "none",
-			"Text": "The sign in front of you says 'Look out for mailboxes. They are dangerous.'",
+			"Text": "It is an archway big enough for you to get through, but probably not the dinosaur.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "talk dinosaur",
+			"Flag": "DinoDead",
+			"Text": "The dinosaur says 'Tongue sticking out on the ground and X's for eyes, not breathing.' Oh wait. That's just what he looks like. Because he's dead.",
 			"Consequence": "none"
 		},
 		{
 			"Action": "talk dinosaur",
 			"Flag": "DinoTalk",
 			"Text": "The dinosaur winks at you and says 'I love having a wife and kids back home. I'm one day from retirement!'",
-			"Consequence": "FrogTalk"
+			"Consequence": "none"
 		}, {
 			"Action": "talk dinosaur",
 			"Flag": "none",

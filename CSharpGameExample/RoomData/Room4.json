@@ -1,6 +1,6 @@
 ﻿{
 	"Label": "Room4",
-	"Description": "\nSmaller chamber with only exit to the south. There is a skelly man on the ground holding a big key.\n",
+	"Description": "\nSmaller chamber with only exit to the south. Very dank and mossy, probably used to be a jail cell or something like that. There is a skellyman on the ground holding a big key.\n",
 	"Items": [{
 		"Name": "Key",
 		"Description": "It probably unlocks something! That's generally how keys work!"
@@ -9,38 +9,58 @@
 		"south_3"
 	],
 	"UniqueActions": [{
-			"Action": "read stream",
+			"Action": "get key",
 			"Flag": "none",
-			"Text": "The stream is definitely made of water. Nice detective work!",
+			"Text": "You pry the key out of the skellyman's hands. 'Oh no... Mr. Key... my only friend...' the skellyman softly sobs.",
+			"Consequence": "Gain_Key;KeyGet"
+		},
+		{
+			"Action": "eat popcorn",
+			"Flag": "SkellyDead",
+			"Text": "You eat the caramel popcorn. It tastes alright at first, but then your throat starts to itch. The itching changes to a burning sensation. You look down and see your skin beginning to melt away, leaving nothing but bones behind! UH OH!",
+			"Consequence": "PlayerDeadCaramel"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "ShotSkelly2",
+			"Text": "You shoot the skellyman again, this time in the skull. His head disintegrates, but a pile of caramel popcorn is revealed inside!",
+			"Consequence": "SkellyDead;Add_Popcorn"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "ShotSkellyman",
+			"Text": "You shoot the skellyman again. 'Now you're just being rude.'",
+			"Consequence": "ShotSkelly2"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "none",
+			"Text": "You shoot the skellyman. 'I get that I might be scary looking, but I'm literally already dead and cannot move. That being said, that bullet did just disintegrate a rib, so... ouch?'",
+			"Consequence": "ShotSkellyman"
+		},
+		{
+			"Action": "read skellyman",
+			"Flag": "none",
+			"Text": "You get a good look at the skellyman. He is a puzzle wrapped inside of an enigma. You're not figuring him out anytime soon!",
 			"Consequence": "none"
 		},
 		{
-			"Action": "get stream",
-			"Flag": "NoFeet",
-			"Text": "You've already lost both feet. You think it might be better to not tempt fate.",
+			"Action": "talk skellyman",
+			"Flag": "KeyGet",
+			"Text": "The skellyman says 'You stole my only friend... Mr. Key... *sob*'",
 			"Consequence": "none"
 		},
 		{
-			"Action": "get stream",
-			"Flag": "none",
-			"Text": "You try to get the stream, but the stream gets you instead!¬Something in the stream has eaten one of your feet.",
-			"Consequence": "BodyDamage"
+			"Action": "talk skellyman",
+			"Flag": "SkellyTalk",
+			"Text": "The skellyman says 'Don't mind me. I'll just be here forever. See ya!'",
+			"Consequence": "none"
 		},
 		{
-			"Action": "read sign",
+			"Action": "talk skellyman",
 			"Flag": "none",
-			"Text": "The sign in front of you says 'Look out for mailboxes. They are dangerous.'",
-			"Consequence": "none"
-		}, {
-			"Action": "talk frog",
-			"Flag": "FrogTalk",
-			"Text": "The frog says 'Got that taco yet? Sure could USE me a TACO, chum!'",
-			"Consequence": "FrogTalk"
-		}, {
-			"Action": "talk frog",
-			"Flag": "none",
-			"Text": "The frog says 'Man, I could really go for a taco. If you bring me a taco, I will grant you unlimited power.'",
-			"Consequence": "FrogTalk"
+			"Text": "The skellyman says 'Oh neat, you killed that dinosaur huh? Finally I can get out of here... or at least I could if I were still alive. Ah well! Life's a beach!'",
+			"Consequence": "SkellyTalk"
 		}
 	]
 }

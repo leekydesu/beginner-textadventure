@@ -1,0 +1,28 @@
+﻿{
+	"Label": "RoomAll",
+	"Description": "",
+	"Items": [
+	],
+	"Exits": [
+		"_NOEXITS"
+	],
+	"UniqueActions": [{
+			"Action": "eat popcorn",
+			"Flag": "PopcornGet",
+			"Text": "You eat the caramel popcorn. It tastes alright at first, but then your throat starts to itch. The itching changes to a burning sensation. You look down and see your skin beginning to melt away, leaving nothing but bones behind! UH OH!",
+			"Consequence": "PlayerDead"
+		},
+		{
+			"Action": "use popcorn",
+			"Flag": "PopcornGet",
+			"Text": "You eat the caramel popcorn. It tastes alright at first, but then your throat starts to itch. The itching changes to a burning sensation. You look down and see your skin beginning to melt away, leaving nothing but bones behind! UH OH!",
+			"Consequence": "PlayerDead"
+		},
+		{
+			"Action": "talk self",
+			"Flag": "none",
+			"Text": "You say hello to yourself. Off in the distance, you hear yourself say hello back. Spooky!",
+			"Consequence": "none"
+		}
+	]
+}

@@ -3,7 +3,7 @@
 	"Description": "\nYou're in a dank room with a big door to the north. There is a massive lock on it. In the corner there is a small stream and a frog sitting there.\n",
 	"Items": [],
 	"Exits": [
-		"north_5",
+		"north_5_DoorUnlocked",
 		"west_1"
 	],
 	"UniqueActions": [{
@@ -14,27 +14,93 @@
 		},
 		{
 			"Action": "get stream",
-			"Flag": "NoFeet",
-			"Text": "You've already lost both feet. You think it might be better to not tempt fate.",
+			"Flag": "StreamPain",
+			"Text": "You've already lost a limb to this thing. You think it might be better to not tempt fate.",
 			"Consequence": "none"
 		},
 		{
 			"Action": "get stream",
-			"Flag": "none",
-			"Text": "You try to get the stream, but the stream gets you instead!¬Something in the stream has eaten one of your feet.",
-			"Consequence": "BodyDamage"
+			"Flag": "",
+			"Text": "You try to get the stream, but the stream gets you instead!\nSomething in the stream has eaten one of your limbs.",
+			"Consequence": "BodyDamage;StreamPain"
 		},
 		{
-			"Action": "read sign",
+			"Action": "north",
 			"Flag": "none",
-			"Text": "The sign in front of you says 'Look out for mailboxes. They are dangerous.'",
+			"Text": "You struggle with the door, but it won't budge. Seems like it'll need unlocked first.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "use key",
+			"Flag": "DoorUnlocked",
+			"Text": "You try to unlock the door again. It's already unlocked. Still feels good and powerful, however.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "use key",
+			"Flag": "none",
+			"Text": "You place the key into the lock of the giant door and twist. It clicks! The door has been unlocked successfully!",
+			"Consequence": "DoorUnlocked"
+		},
+		{
+			"Action": "use taco",
+			"Flag": "none",
+			"Text": "The frog eats the taco with glee in a single giant bite. 'My god,' the frog says, 'it had been so long...'\n'As promised, I will now grant you unlimited power.'\nThe frog twiddles his fingers in the air for a moment, then pulls a gun out of a bag and gives it to you.",
+			"Consequence": "GunGet;Lose_Taco;Gain_Gun"
+		},
+		{
+			"Action": "open door",
+			"Flag": "DoorUnlocked",
+			"Text": "You swing the door open on its hinges now that it has been unlocked. Technology is neat. You can walk through to the north whenever you're ready.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "open door",
+			"Flag": "none",
+			"Text": "You struggle with the door, but it won't budge. Seems like it'll need unlocked first.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "read door",
+			"Flag": "none",
+			"Text": "It's a big sturdy door made of wood. It also a cartoonishly large lock on it with an equally cartoony large keyhole.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "read lock",
+			"Flag": "none",
+			"Text": "The lock is huge and sturdy. You're going to need something to unlock it.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "FrogDead",
+			"Text": "You shoot the frog again. He is now... deader? You're making it weird.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "GunGet",
+			"Text": "You shoot the frog. He is now dead. He probably should have expected this.",
+			"Consequence": "FrogDead;GunShot"
+		},
+		{
+			"Action": "talk frog",
+			"Flag": "FrogDead",
+			"Text": "The frog says '...' because you killed it, you monster.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "talk frog",
+			"Flag": "GunGet",
+			"Text": "The frog says 'Nothing more powerful than a gun! Pew pew!'",
 			"Consequence": "none"
 		},
 		{
 			"Action": "talk frog",
 			"Flag": "FrogTalk",
 			"Text": "The frog says 'Got that taco yet? Sure could USE me a TACO, chum!'",
-			"Consequence": "FrogTalk"
+			"Consequence": "none"
 		},
 		{
 			"Action": "talk frog",

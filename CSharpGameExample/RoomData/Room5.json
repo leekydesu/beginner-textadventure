@@ -1,6 +1,6 @@
 ﻿{
 	"Label": "Room5",
-	"Description": "\nYou're in a dank room with a big door to the north. There is a massive lock on it. In the corner there is a small stream and a frog sitting there.\n",
+	"Description": "\nYou're now in a room glistening with gold and silver. There's an exit to south, where you came from. There's a big chest of treasure up ahead on a pedestal.\n",
 	"Items": [{
 		"Name": "Treasure",
 		"Description": "With this in hand, you can win the game. Wonder what it is! Probably a fancy hat."
@@ -9,40 +9,58 @@
 		"south_2"
 	],
 	"UniqueActions": [{
-			"Action": "read stream",
-			"Flag": "none",
-			"Text": "The stream is definitely made of water. Nice detective work!",
+			"Action": "open chest",
+			"Flag": "ChestOpen",
+			"Text": "Treasure chest has already been plundered. By you! Good for you!",
 			"Consequence": "none"
 		},
 		{
-			"Action": "get stream",
-			"Flag": "NoFeet",
-			"Text": "You've already lost both feet. You think it might be better to not tempt fate.",
+			"Action": "read chest",
+			"Flag": "none",
+			"Text": "It says 'Feed me a wallet'. Huh. Weird, right?",
 			"Consequence": "none"
 		},
 		{
-			"Action": "get stream",
+			"Action": "talk chest",
 			"Flag": "none",
-			"Text": "You try to get the stream, but the stream gets you instead!¬Something in the stream has eaten one of your feet.",
+			"Text": "You say hello to the chest and try to strike up a conversation about sports. It does not work. The chest is not amused.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "use chest",
+			"Flag": "none",
+			"Text": "You haphazardly shake the chest. It rattles and clanks a bit, but doesn't do much of note.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "use gun",
+			"Flag": "none",
+			"Text": "The chest gobbles up your gun when it is presented. It snarls at you menacingly. Wanton violence has finally failed to solve a problem!",
+			"Consequence": "Lose_Gun"
+		},
+		{
+			"Action": "use wallet",
+			"Flag": "none",
+			"Text": "The chest gobbles up your wallet when it is presented. Its hunger has subsided it looks like!",
+			"Consequence": "Lose_Wallet;ChestHappy"
+		},
+		{
+			"Action": "open chest",
+			"Flag": "TreasureGet",
+			"Text": "There's a partially digested wallet inside underneath where the treasure was sitting. You should just leave that there.",
+			"Consequence": "none"
+		},
+		{
+			"Action": "open chest",
+			"Flag": "ChestHappy",
+			"Text": "You open up the treasure chest and take out the ambiguous treasure within! Civilization will surely be saved now!\nYou could probably press 'q' to quit the game and exit the dungeon happily now!",
+			"Consequence": "Gain_Treasure;TreasureGet"
+		},
+		{
+			"Action": "open chest",
+			"Flag": "none",
+			"Text": "As you attempt to open the chest, it suddenly opens up and bites you, taking a limb off of you. Whoopsie!",
 			"Consequence": "BodyDamage"
-		},
-		{
-			"Action": "read sign",
-			"Flag": "none",
-			"Text": "The sign in front of you says 'Look out for mailboxes. They are dangerous.'",
-			"Consequence": "none"
-		},
-		{
-			"Action": "talk frog",
-			"Flag": "FrogTalk",
-			"Text": "The frog says 'Got that taco yet? Sure could USE me a TACO, chum!'",
-			"Consequence": "FrogTalk"
-		},
-		{
-			"Action": "talk frog",
-			"Flag": "none",
-			"Text": "The frog says 'Man, I could really go for a taco. If you bring me a taco, I will grant you unlimited power.'",
-			"Consequence": "FrogTalk"
 		}
 	]
 }
