@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CSharpGameExample
@@ -41,9 +42,10 @@ namespace CSharpGameExample
 
         }
 
-        public void RemoveItem()
+        public void RemoveItem(string itemName)
         {
-
+            Item itemToRemove = Items.Find(item => item.Name == itemName);
+            Items.Remove(itemToRemove);
         }
     }
 }

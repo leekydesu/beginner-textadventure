@@ -19,6 +19,12 @@
 		},
 		{
 			"Action": "get key",
+			"Flag": "SkellyDead",
+			"Text": "You pry the key out of the skellyman's hands. He doesn't seem to mind.",
+			"Consequence": "Gain_Key;KeyGet"
+		},
+		{
+			"Action": "get key",
 			"Flag": "none",
 			"Text": "You pry the key out of the skellyman's hands. 'Oh no... Mr. Key... my only friend...' the skellyman softly sobs.",
 			"Consequence": "Gain_Key;KeyGet"

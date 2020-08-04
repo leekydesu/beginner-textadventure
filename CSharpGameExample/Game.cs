@@ -158,6 +158,8 @@ namespace CSharpGameExample
                         Item itemToAdd = Items.Find(item => item.Name.ToLower() == actionItem);
                         Character.Inventory.Add(itemToAdd);
                         Dialog($"You {actionVerb} the {actionItem}");
+                        (Rooms.Find(room => room.Label == activeScene)).RemoveItem(itemToAdd.Name);
+                        currentRoom.Items.Remove(itemToAdd);
                         if (itemToAdd.NewRoomDescription != "")
                         {
                             (Rooms.Find(room => room.Label == activeScene)).UpdateDescription(itemToAdd.NewRoomDescription);

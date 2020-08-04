@@ -13,6 +13,12 @@
 			"Consequence": "PlayerDead"
 		},
 		{
+			"Action": "eat popcorn",
+			"Flag": "none",
+			"Text": "You cannot eat a popcorn.",
+			"Consequence": "none"
+		},
+		{
 			"Action": "use popcorn",
 			"Flag": "PopcornGet",
 			"Text": "You eat the caramel popcorn. It tastes alright at first, but then your throat starts to itch. The itching changes to a burning sensation. You look down and see your skin beginning to melt away, leaving nothing but bones behind! UH OH!",
